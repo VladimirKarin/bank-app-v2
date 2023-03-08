@@ -1,38 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Golos+Text:wght@400;500;600;700;800;900&display=swap');
+
+html {
+    font-size: 16px;
+}
+
+body,
+body * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Crimson Text', serif;
+    font-family: 'Golos Text', sans-serif;
+}
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #4a1e7d;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    color: white;
+    padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 10px;
+}
+h2 + div {
+    font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 50px;
+    border: 5px solid #ffa56b;
+    border-radius: 20px;
+}
+
+.summary .summary_total {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.summary p {
+    color: #ffffff;
+    margin-left: 50px;
+}
+
+h1,
+h2,
+p,
+a,
+span {
+    color: #fff;
+}
+
+/* styling form */
+
+form {
+    border: 5px solid #ffa56b;
+    border-radius: 20px;
+    padding: 20px 105px;
+    text-align: right;
+}
+
+form div {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+input[type='text'] {
+    width: 300px;
+    padding: 5px;
+    background: #c1a0e8;
+    color: #000a;
+    border: solid 2px #220d39;
+    border-radius: 5px;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+input[type='text']:focus {
+    border: 1px solid #9c66da;
+    outline: none;
+    outline-offset: 5px;
+}
+
+label {
+    padding-right: 10px;
+    width: 85px;
+}
+span {
+    font-weight: bold;
+    color: white;
+}
+
+/* button styling */
+button {
+    display: block;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+    border: none;
+    border-radius: 0.3em;
+    transition: background 0.5s;
+    text-decoration: none;
+    color: #fff;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button.add {
+    font-size: 0.8rem;
+    background: #ffa56b;
+    padding: 1em 1.5em;
+    text-transform: capitalize;
+    display: inline-block;
+}
+button.delete {
+    background-color: #f470a9;
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+    margin-top: 5px;
+}
+button.delete:hover {
+    background-color: #e8106d;
+}
+
+button.add:hover {
+    background: #f96100;
+}
+
+button.deposit,
+button.withdraw {
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+}
+.deposit {
+    background-color: #3e9292;
+    margin-right: 0.5em;
+    margin-top: 5px;
+}
+.deposit:hover {
+    background-color: #4aafaf;
+}
+.withdraw {
+    background: #f03183;
+    margin-top: 5px;
+}
+.withdraw:hover {
+    background: #e8106d;
+}
+
+/* Styling list items */
+.accounts-container {
+    text-align: right;
+    width: 100%;
+}
+
+.filter {
+    margin-bottom: 20px;
+}
+
+.filter * {
+    font-size: 0.8rem;
+}
+
+p.none {
+    text-align: center !important;
+    background: none;
+    font-size: 0.67rem !important;
+}
+
+select {
+    background-color: #c1a0e8;
+    color: white;
+    height: 20px;
+    outline: none;
+}
+
+.accounts-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.accounts > * {
+    border: 5px solid #ffa56b;
+    border-radius: 20px;
+    /* background: linear-gradient(
+        90deg,
+        hsl(227, 27%, 25%) 0%,
+        hsl(227, 27%, 35%) 100%
+    ); */
+}
+.accounts > div {
+    padding: 20px;
+}
+.accounts > div {
+    border-radius: 20px;
+    margin: 40px;
+}
+
+/* .accounts > :nth-child(2n) {
+    background: linear-gradient(
+        90deg,
+        hsl(215, 54%, 25%) 0%,
+        hsl(215, 54%, 35%) 100%
+    );
+} */
+.accounts p {
+    font-size: 1rem;
+    text-align: left;
+}
+
+.info {
+    text-align: left;
+    text-transform: capitalize;
+    max-width: 50%;
+}
+.transfers {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.transfers button {
+    display: inline-block;
+}
+
+input[type='number'] {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    padding: 0 4px;
+    width: 170px;
+}
+/* modal style */
+.hidden {
+    display: none;
+}
+.visible {
+    display: block;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    background-color: hsla(0, 0%, 0%, 80%);
+}
+.modal > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    background-color: #11a8ab;
+    border-radius: 0.5em;
+    text-align: center;
+}
+
+@media (min-width: 576px) {
+    html {
+        font-size: 18px;
+    }
+    .accounts-container {
+        width: 80%;
+        max-width: 600px;
+    }
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 20px;
+    }
+    .accounts-container {
+        width: 80%;
+        max-width: 600px;
+    }
 }

@@ -1,22 +1,27 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import AccountList from './Components/AccountList';
+import AccountSummary from './Components/AccountSummary';
+import AddNewAcccount from './Components/AddNewAccount';
 
 function App() {
+  const [account, setAccount] = useState(JSON.parse(localStorage.getItem('accounts')) || []);
+
+  const accountListGenerator = (name, lastName) => {
+    setAccount(prev => [...prev, { name, lastName, id: Math.random(), sum: 0, value: '' }]);
+  };
+
+  useEffect(() => localStorage.setItem('accounts', JSON.stringify(account)), [account]);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <AccountSummary accounts={account} />
+        <AddNewAcccount accountListGenerator={accountListGenerator} />
+        <AccountList
+          accounts={account}
+          setAccount={setAccount}
+        />
       </header>
     </div>
   );
