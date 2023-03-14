@@ -2,25 +2,69 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import AccountList from './Components/AccountList';
 import AccountSummary from './Components/AccountSummary';
-import AddNewAcccount from './Components/AddNewAccount';
+import AddNewAccount from './Components/AddNewAccount';
+import axios from 'axios';
+
+const URL = 'http://localhost:3333/users';
 
 function App() {
-  const [account, setAccount] = useState(JSON.parse(localStorage.getItem('accounts')) || []);
 
-  const accountListGenerator = (name, lastName) => {
-    setAccount(prev => [...prev, { name, lastName, id: Math.random(), sum: 0, value: '' }]);
+  const [users, setUsers] = useState([]);
+  // const [lastUpdate, setLastUpdate] = useState(Date.now());
+
+  const handleAddAccount = (firstName, lastName) => {
+    axios.post(URL, { firstName, lastName }).then(res => {
+      axios.get(URL).then(res => {
+        setUsers(res.data);
+      });
+    });
   };
 
-  useEffect(() => localStorage.setItem('accounts', JSON.stringify(account)), [account]);
+  const handleDeleteAccount = (id) => {
+    axios.delete(URL + '/' + id).then(_ => {
+      axios.get(URL).then(res => {
+        setUsers(res.data);
+      });
+    });
+  };
+
+  const handleDepositAmountChange = (id, amount) => {
+    axios.put(URL + '/' + id, { amount }).then(_ => {
+      axios.get(URL).then(res => {
+        setUsers(res.data);
+      });
+    });
+  };
+
+
+  useEffect(() => {
+    axios.get(URL).then(res => {
+      setUsers(res.data);
+    });
+  }, []);
+
+  // useEffect(() => {
+  //   if (null === users) {
+  //     return;
+  //   }
+  //   axios.delete(URL + '/' + users.id).then((res) => { });
+  // }, [users]);
+
+
+
+
 
   return (
+
     <div className="App">
       <header className="App-header">
-        <AccountSummary accounts={account} />
-        <AddNewAcccount accountListGenerator={accountListGenerator} />
+        <AccountSummary accounts={users} />
+        <AddNewAccount onSaveNewAccount={handleAddAccount} />
         <AccountList
-          accounts={account}
-          setAccount={setAccount}
+          onDeleteUser={handleDeleteAccount}
+          accounts={users}
+          setUsers={setUsers}
+          onDepositAmountChange={handleDepositAmountChange}
         />
       </header>
     </div>
