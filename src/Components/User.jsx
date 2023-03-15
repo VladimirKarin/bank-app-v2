@@ -36,7 +36,7 @@ const User = ({ user, onDeleteUser, onDepositAmountChange }) => {
                         className="deposit"
                         onClick={() => {
                             onDepositAmountChange(user.id, amount);
-                            setAmount(0);
+                            setAmount('');
                         }}
                     >
                         Deposit
@@ -45,7 +45,7 @@ const User = ({ user, onDeleteUser, onDepositAmountChange }) => {
                         className="withdraw"
                         onClick={() => {
                             onDepositAmountChange(user.id, -amount);
-                            setAmount(0);
+                            setAmount('');
                         }}
                     >
                         Withdraw

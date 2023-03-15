@@ -10,7 +10,6 @@ const URL = 'http://localhost:3333/users';
 function App() {
 
   const [users, setUsers] = useState([]);
-  // const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   const handleAddAccount = (firstName, lastName) => {
     axios.post(URL, { firstName, lastName }).then(res => {
@@ -21,12 +20,13 @@ function App() {
   };
 
   const handleDeleteAccount = (id) => {
-    axios.delete(URL + '/' + id).then(_ => {
+    axios.delete(URL + '/' + id).then(res => {
       axios.get(URL).then(res => {
         setUsers(res.data);
       });
     });
   };
+
 
   const handleDepositAmountChange = (id, amount) => {
     axios.put(URL + '/' + id, { amount }).then(_ => {
