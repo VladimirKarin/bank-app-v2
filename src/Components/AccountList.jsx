@@ -13,31 +13,31 @@ const AccountList = ({
 
     // const deleteHandler = (id) => {
     //     if (accounts.filter((user) => user.id === id)[0].sum > 0) {
-    //         setModal({
-    //             class: 'visible',
-    //             msg: `Destruction is imposible. You've got funds.`,
-    //             color: '#f470a9FF',
-    //         });
-    //         setTimeout(() => {
-    //             setModal({
-    //                 class: 'hidden',
-    //                 msg: '',
-    //                 color: '',
-    //             });
-    //         }, 1500);
-    //     } else {
+    //     setModal({
+    //         class: 'visible',
+    //         msg: `Destruction is imposible. You've got funds.`,
+    //         color: '#f470a9FF',
+    //     });
+    //     setTimeout(() => {
     //         setModal({
     //             class: 'hidden',
-    //             msg: 'Destruction completed',
-    //             color: '#93d1d1ff',
+    //             msg: '',
+    //             color: '',
     //         });
-    //         setTimeout(() => {
-    //             setModal({
-    //                 class: 'hidden',
-    //                 msg: '',
-    //                 color: '',
-    //             });
-    //         }, 1500);
+    //     }, 1500);
+    // } else {
+    //     setModal({
+    //         class: 'hidden',
+    //         msg: 'Destruction completed',
+    //         color: '#93d1d1ff',
+    //     });
+    //     setTimeout(() => {
+    //         setModal({
+    //             class: 'hidden',
+    //             msg: '',
+    //             color: '',
+    //         });
+    //     }, 1500);
     //         setAccount((prev) => prev.filter((user) => user.id !== id));
     //     }
     // };
