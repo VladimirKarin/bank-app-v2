@@ -12,7 +12,8 @@ export const GlobalProvider = ({ children }) => {
             value={{
                 filtered,
                 setFiltered,
-                setCreate,
+                response,
+                setResponse,
             }}
         >
             {children}

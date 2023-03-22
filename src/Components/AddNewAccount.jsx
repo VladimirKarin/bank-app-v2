@@ -44,25 +44,25 @@ const AddNewAccount = ({ onSaveNewAccount }) => {
     return (
         <form className="form-style" onSubmit={submitHandler}>
             <div>
-                <label htmlFor="firstName">First firstName</label>
+                <label htmlFor="firstName">First Name</label>
                 <input
                     type="text"
                     id="firstName"
                     value={firstName}
                     onChange={addNameHandler}
-                    placeholder="Enter your First firstName"
-                    title="Be so kind and enter your First firstName"
+                    placeholder="Enter your First Name"
+                    title="Be so kind and enter your First Name"
                     required
                 />
             </div>
             <div>
-                <label htmlFor="lastName">Last firstName</label>
+                <label htmlFor="lastName">Last Name</label>
                 <input
                     type="text"
                     id="lastname"
                     value={lastName}
-                    placeholder="Enter your last firstName"
-                    title="Now your last firstName, please"
+                    placeholder="Enter your Last Name"
+                    title="Now your last Name, please"
                     onChange={addLastNameHandler}
                     required
                 />
