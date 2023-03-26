@@ -1,18 +1,26 @@
 import { useState } from 'react';
 
 const AddNewAccount = ({ onSaveNewAccount }) => {
-    const [firstName, setName] = useState('');
+    const MODAL_TYPES = {
+        ERROR: 'error',
+        SUCCESS: 'success',
+    };
+
+    const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [modal, setModal] = useState({ class: 'hidden', msg: '', color: '' });
+    const [visible, setVisible] = useState(false);
+    const [message, setMessage] = useState('ERROR');
+    const [type, setType] = useState(MODAL_TYPES.ERROR);
+    const [modalClassName, setModalClassName] = useState('app-modal,');
 
     //Entered firstName and last firstName validation
 
-    function inputIsValidInput(firstName) {
-        return firstName.trim() && /^[A-Za-z\s]*$/.test(firstName);
+    function inputIsValidInput(name) {
+        return name.trim() && /^[A-Za-z\s]*$/.test(name);
     }
 
     const addNameHandler = (e) => {
-        setName(e.target.value);
+        setFirstName(e.target.value);
     };
 
     const addLastNameHandler = (e) => {
@@ -21,23 +29,22 @@ const AddNewAccount = ({ onSaveNewAccount }) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        onSaveNewAccount(firstName, lastName);
-
         if (inputIsValidInput(firstName) && inputIsValidInput(lastName)) {
-            setName('');
+            onSaveNewAccount(firstName, lastName);
+            setFirstName('');
             setLastName('');
         } else {
-            setModal({
-                class: 'visible',
-                msg: 'Please, use letters ONLY',
-                color: '#f470a9ff',
-            });
+            setVisible(true);
+            setMessage('Use only letters');
+            setModalClassName('app-modal modal-error');
+            setType(MODAL_TYPES.ERROR);
+
             setTimeout(() => {
-                setModal({
-                    class: 'hidden',
-                    msg: '',
-                });
-            }, 1500);
+                setVisible(false);
+                setMessage('');
+                setModalClassName('app-modal');
+                setType(MODAL_TYPES.ERROR);
+            }, 2000);
         }
     };
 
@@ -72,9 +79,12 @@ const AddNewAccount = ({ onSaveNewAccount }) => {
             </button>
 
             {/* Modal*/}
-            <div className={`${modal.class} modal`}>
-                <p style={{ backgroundColor: modal.color }}>{modal.msg}</p>
-            </div>
+            {visible && (
+                <div className={modalClassName}>
+                    <p>{message}</p>
+                </div>
+            )}
+            {/*app-modal-success app-modal-error*/}
         </form>
     );
 };
