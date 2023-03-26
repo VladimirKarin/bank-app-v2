@@ -11,7 +11,6 @@ function Login() {
         axios
             .get('http://localhost:3333/login', { withCredentials: true })
             .then((res) => {
-                console.log(res.data);
                 if (res.data.status === 'OK') {
                     setUserName(res.data.name);
                 }
@@ -57,7 +56,7 @@ function Login() {
                     )}
                 </h5>
                 <div className="login_name">
-                    <label className="form-label">UsersName</label>
+                    <label className="form-label"></label>
                     <input
                         type="text"
                         className="form-control"
@@ -67,7 +66,7 @@ function Login() {
                     />
                 </div>
                 <div className="login_password">
-                    <label className="form-label">Password</label>
+                    <label className="form-label"></label>
                     <input
                         type="password"
                         className="form-control"
