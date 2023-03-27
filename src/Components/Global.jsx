@@ -1,19 +1,24 @@
 import { createContext, useState } from 'react';
-import { useWrite } from '../Use/useWrite';
 
 export const Global = createContext();
 
 export const GlobalProvider = ({ children }) => {
-    const [response, setCreate] = useWrite();
     const [filtered, setFiltered] = useState('all');
+    const [route, setRoute] = useState('bank');
+    const [authName, setAuthName] = useState(null);
 
     return (
         <Global.Provider
             value={{
+                //filter
                 filtered,
                 setFiltered,
-                response,
-                setResponse,
+                // Route
+                route,
+                setRoute,
+                //auth
+                authName,
+                setAuthName,
             }}
         >
             {children}
