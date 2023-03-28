@@ -5,19 +5,19 @@ import LoadingSpinner from './Loader';
 import Login from './Login';
 
 function Auth({ children }) {
-    const [logged, setlogged] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const { setAuthName } = useContext(Global);
+    const { setAuthName, logged, setLogged } = useContext(Global);
 
     useEffect(() => {
         axios
             .get('http://localhost:3333/login', { withCredentials: true })
             .then((res) => {
                 if (res.data.status === 'OK') {
-                    setlogged(true);
+                    setLogged(true);
                     setAuthName(res.data.name);
                 } else {
-                    setlogged(false);
+                    setLogged(false);
+                    setAuthName(null);
                 }
             });
     }, []);

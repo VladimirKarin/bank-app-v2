@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import { Global } from './Global';
-import './Nav.css';
+import './styles/nav.css';
 
 function Nav() {
-    const { route, setRoute, authName } = useContext(Global);
+    const { route, setRoute, authName, logOut } = useContext(Global);
 
     return (
         <nav className="navbar">
@@ -27,7 +27,9 @@ function Nav() {
                         {authName ? (
                             <>
                                 <span className="nav-link">{authName}</span>
-                                <span className="nav-link">Logout</span>
+                                <span className="nav-link" onClick={logOut}>
+                                    Logout
+                                </span>
                             </>
                         ) : (
                             <span
@@ -42,17 +44,6 @@ function Nav() {
                                 Login
                             </span>
                         )}
-                        {/* <span
-                            onClick={(_) => setRoute('login')}
-                            href="#"
-                            className={
-                                'nav-link' +
-                                (route === 'login' ? ' active' : '')
-                            }
-                            aria-current="page"
-                        >
-                            Login
-                        </span> */}
                     </div>
                 </div>
             </div>

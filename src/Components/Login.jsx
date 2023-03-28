@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { Global } from './Global';
 
 function Login() {
     const [userName, setUserName] = useState('null');
     const [error, setError] = useState('null');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const { setLogged, setAuthName } = useContext(Global);
 
     useEffect(() => {
         axios
@@ -30,6 +32,8 @@ function Login() {
                     setUserName(res.data.name);
                     setName('');
                     setPassword('');
+                    setLogged(true);
+                    setAuthName(res.data.name);
                     setError(null);
                 } else {
                     setError(true);
