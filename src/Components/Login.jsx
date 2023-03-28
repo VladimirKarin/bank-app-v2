@@ -4,7 +4,7 @@ import { Global } from './Global';
 
 function Login() {
     const [userName, setUserName] = useState('null');
-    const [error, setError] = useState('null');
+    const [error, setError] = useState(null);
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const { setLogged, setAuthName } = useContext(Global);
