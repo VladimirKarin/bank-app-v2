@@ -43,17 +43,31 @@ function Nav() {
                                 </span>
                             </>
                         ) : (
-                            <span
-                                onClick={(_) => setRoute('login')}
-                                href="#"
-                                className={
-                                    'nav-link' +
-                                    (route === 'login' ? ' active' : '')
-                                }
-                                aria-current="page"
-                            >
-                                Login
-                            </span>
+                            <>
+                                <span
+                                    onClick={(_) => setRoute('login')}
+                                    href="#"
+                                    className={
+                                        'nav-link' +
+                                        (route === 'login' ? ' active' : '')
+                                    }
+                                    aria-current="page"
+                                >
+                                    Login
+                                </span>
+
+                                <span
+                                    onClick={(_) => setRoute('register')}
+                                    href="#"
+                                    className={
+                                        'nav-link' +
+                                        (route === 'login' ? ' active' : '')
+                                    }
+                                    aria-current="page"
+                                >
+                                    Register
+                                </span>
+                            </>
                         )}
                     </div>
                 </div>
