@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Global } from './Global';
 
 function Login() {
-    const [userName, setUserName] = useState('null');
     const [error, setError] = useState(null);
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -14,7 +13,6 @@ function Login() {
             .get('http://localhost:3333/login', { withCredentials: true })
             .then((res) => {
                 if (res.data.status === 'OK') {
-                    setUserName(res.data.name);
                 }
             });
     }, []);
@@ -29,7 +27,6 @@ function Login() {
             .then((res) => {
                 console.log(res.data);
                 if (res.data.status === 'OK') {
-                    setUserName(res.data.name);
                     setName('');
                     setPassword('');
                     setLogged(true);
@@ -37,7 +34,6 @@ function Login() {
                     setError(null);
                 } else {
                     setError(true);
-                    setUserName(null);
                 }
             });
     };
@@ -53,11 +49,7 @@ function Login() {
             </div>
             <div className="card-body">
                 <h5 className="card-title">
-                    {userName ? (
-                        <span>Hello, {userName}</span>
-                    ) : (
-                        <span>Hello, guest.</span>
-                    )}
+                    <span>Hello, guest.</span>
                 </h5>
                 <div className="login_name">
                     <label className="form-label"></label>

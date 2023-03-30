@@ -22,6 +22,17 @@ function Nav() {
                         >
                             Bank Account
                         </span>
+                        <span
+                            onClick={(_) => setRoute('registered-users')}
+                            href="#"
+                            className={
+                                'nav-link' +
+                                (route === 'registered-users' ? ' active' : '')
+                            }
+                            aria-current="page"
+                        >
+                            Users
+                        </span>
                     </div>
                     <div className="right">
                         {authName ? (

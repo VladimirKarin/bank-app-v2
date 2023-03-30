@@ -3,6 +3,7 @@ import { Global } from './Global';
 import BankUsersPage from './BankUsersPage';
 import Login from './Login';
 import Auth from './Auth';
+import Users from './Users';
 
 function Routes() {
     const { route } = useContext(Global);
@@ -14,6 +15,14 @@ function Routes() {
                     <BankUsersPage />
                 </Auth>
             );
+
+        case 'registered-users':
+            return (
+                <Auth>
+                    <Users />
+                </Auth>
+            );
+
         case 'login':
             return <Login />;
         default:
