@@ -9,14 +9,16 @@ function Register() {
     const [repeatedPassword, setRepeatedPassword] = useState('');
     // const { setLogged, setAuthName } = useContext(Global);
 
-    useEffect(() => {
-        axios
-            .get('http://localhost:3333/login', { withCredentials: true })
-            .then((res) => {
-                if (res.data.status === 'OK') {
-                }
-            });
-    }, []);
+    // useEffect(() => {
+    //     axios
+    //         .get('http://localhost:3333/login', {
+    //             withCredentials: true,
+    //         })
+    //         .then((res) => {
+    //             if (res.data.status === 'OK') {
+    //             }
+    //         });
+    // }, []);
 
     const register = (_) => {
         if (name.length < 3) {
@@ -41,7 +43,6 @@ function Register() {
                 { withCredentials: true }
             )
             .then((res) => {
-                console.log(res.data);
                 if (res.data.status === 'OK') {
                     setName('');
                     setPassword('');

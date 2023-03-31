@@ -31,7 +31,7 @@ function Nav() {
                             }
                             aria-current="page"
                         >
-                            Users
+                            Registered Users List
                         </span>
                     </div>
                     <div className="right">

@@ -8,15 +8,7 @@ export const useWrite = _ => {
 
     const [create, setCreate] = useState(null);
     const [response, setResponse] = useState(null);
-
-    useEffect(() => {
-
-        axios.post(URL, create)
-            .then(res => setResponse(res.data));
-
-    }, [create])
-
-
-    return [response, setCreate];
+    const [destroy, setDelete] = useState(null);
+    const [edit, setEdit] = useState(null);
 
 }

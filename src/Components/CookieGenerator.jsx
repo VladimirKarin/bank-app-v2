@@ -11,9 +11,7 @@ function CookieGenerator() {
                 { text },
                 { withCredentials: true }
             )
-            .then((res) => {
-                console.log(res.data);
-            });
+            .then((res) => {});
     };
 
     const del = (_) => {
@@ -23,9 +21,7 @@ function CookieGenerator() {
                 { delete: true },
                 { withCredentials: true }
             )
-            .then((res) => {
-                console.log(res.data);
-            });
+            .then((res) => {});
     };
 
     return (
