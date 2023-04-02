@@ -4,14 +4,15 @@ import './styles/nav.css';
 import axios from 'axios';
 
 function Nav() {
-    const { route, setRoute, authName, setLogged } = useContext(Global);
+    const { route, setRoute, authName, setLogged, authRole } =
+        useContext(Global);
 
     const logOut = (_) => {
         axios
             .post('http://localhost:3333/logout', {}, { withCredentials: true })
             .then((res) => {
                 setLogged(false);
-                authName(null);
+                authName(false);
                 setRoute('home');
             });
     };
@@ -31,27 +32,35 @@ function Nav() {
                         >
                             Home
                         </span>
-                        <span
-                            onClick={(_) => setRoute('bank')}
-                            href="#"
-                            className={
-                                'nav-link' + (route === 'bank' ? ' active' : '')
-                            }
-                            aria-current="page"
-                        >
-                            Bank Account
-                        </span>
-                        <span
-                            onClick={(_) => setRoute('registered-users')}
-                            href="#"
-                            className={
-                                'nav-link' +
-                                (route === 'registered-users' ? ' active' : '')
-                            }
-                            aria-current="page"
-                        >
-                            Registered Users List
-                        </span>
+                        {['admin', 'user'].includes(authRole) ? (
+                            <span
+                                onClick={(_) => setRoute('bank')}
+                                href="#"
+                                className={
+                                    'nav-link' +
+                                    (route === 'bank' ? ' active' : '')
+                                }
+                                aria-current="page"
+                            >
+                                Bank Account
+                            </span>
+                        ) : null}
+
+                        {['admin'].includes(authRole) ? (
+                            <span
+                                onClick={(_) => setRoute('registered-users')}
+                                href="#"
+                                className={
+                                    'nav-link' +
+                                    (route === 'registered-users'
+                                        ? ' active'
+                                        : '')
+                                }
+                                aria-current="page"
+                            >
+                                Registered Users List
+                            </span>
+                        ) : null}
                     </div>
                     <div className="right">
                         {authName ? (

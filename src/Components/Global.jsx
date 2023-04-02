@@ -15,6 +15,7 @@ export const GlobalProvider = ({ children }) => {
     const [userResponse, setUserDelete] = useWriteRegisteredUsers();
     const [messages, setMessage] = useMessages([]);
     const [response, setResponse] = useState(null);
+    const [authRole, setAuthRole] = useState(null);
 
     useEffect(() => {
         if (null === response) {
@@ -49,6 +50,10 @@ export const GlobalProvider = ({ children }) => {
         }
     }, [setUpdateUsers, setMessage, userResponse]);
 
+    // useEffect(() => {
+    //     setLogged(null);
+    // }, [route]);
+
     useEffect(() => {
         if (route === 'registered-users') {
             setUpdateUsers(Date.now());
@@ -79,6 +84,9 @@ export const GlobalProvider = ({ children }) => {
                 setUserDelete,
                 //Login
                 setRoute,
+                //AuthRole
+                authRole,
+                setAuthRole,
             }}
         >
             {children}

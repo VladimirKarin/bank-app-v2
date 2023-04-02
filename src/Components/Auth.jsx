@@ -23,7 +23,9 @@ function Auth({ children, roles }) {
             .then((res) => {
                 if (res.data.status === 'ok') {
                     setAuthName(res.data.name);
+                    console.log(res.data.name);
                     setAuthRole(res.data.role);
+                    console.log('2', res.data.role);
                     if (roles) {
                         if (roles.split(',').includes(res.data.role)) {
                             setLogged(1);
