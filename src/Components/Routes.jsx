@@ -5,21 +5,29 @@ import Login from './Login';
 import Auth from './Auth';
 import Users from './Users';
 import Register from './Register';
+import Home from './Home';
 
 function Routes() {
     const { route } = useContext(Global);
 
     switch (route) {
+        case 'home':
+            return (
+                <Auth roles={''}>
+                    <Home />
+                </Auth>
+            );
+
         case 'bank':
             return (
-                <Auth>
+                <Auth roles={'admin, user'}>
                     <BankUsersPage />
                 </Auth>
             );
 
         case 'registered-users':
             return (
-                <Auth>
+                <Auth roles={'admin'}>
                     <Users />
                 </Auth>
             );

@@ -1,16 +1,14 @@
-import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
 import { useReadRegisteredUsers } from '../Use/useReadRegisteredUsers';
 import { useWriteRegisteredUsers } from '../Use/useWriteUse';
 import { useMessages } from '../Use/useMessage';
-import { useWrite } from '../Use/useWrite';
 
 export const Global = createContext();
 
 export const GlobalProvider = ({ children }) => {
+    const [route, setRoute] = useState('home');
     const [update, setUpdate] = useState(Date.now());
     const [filtered, setFiltered] = useState('all');
-    const [route, setRoute] = useState('bank');
     const [authName, setAuthName] = useState(null);
     const [logged, setLogged] = useState(null);
     const [users, setUpdateUsers] = useReadRegisteredUsers();
@@ -19,32 +17,37 @@ export const GlobalProvider = ({ children }) => {
     const [response, setResponse] = useState(null);
 
     useEffect(() => {
+        if (null === response) {
+            return;
+        }
         setUpdate(Date.now());
-
-        // if (null !== response) {
-        //     setMessage({
-        //         text: response.message.text,
-        //         type: response.message.type,
-        //     });
-        // }
+        if (null !== response) {
+            setMessage({
+                text: response.message.text,
+                type: response.message.type,
+            });
+        }
     }, [response, setMessage, setUpdate]);
 
     useEffect(() => {
+        if (null === userResponse) {
+            return;
+        }
         setUpdateUsers(Date.now());
-        // if (null !== userResponse && userResponse.code) {
-        //     setMessage({
-        //         text: userResponse.message
-        //             ? userResponse.message
-        //             : userResponse.code,
-        //         type: 'error',
-        //     });
-        // } else if (null !== userResponse) {
-        //     setMessage({
-        //         text: response.message.text,
-        //         type: response.message.type,
-        //     });
-        // }
-    }, [userResponse, setMessage, setUpdate]);
+        if (userResponse.code) {
+            setMessage({
+                text: userResponse.message
+                    ? userResponse.message
+                    : userResponse.code,
+                type: 'error',
+            });
+        } else {
+            setMessage({
+                text: userResponse.message.text,
+                type: userResponse.message.type,
+            });
+        }
+    }, [setUpdateUsers, setMessage, userResponse]);
 
     useEffect(() => {
         if (route === 'registered-users') {
@@ -52,16 +55,7 @@ export const GlobalProvider = ({ children }) => {
         } else if (route === 'bank') {
             setUpdate(Date.now());
         }
-    }, [route]);
-
-    const logOut = (_) => {
-        axios
-            .post('http://localhost:3333/logout', {}, { withCredentials: true })
-            .then((res) => {
-                setLogged(false);
-                authName(null);
-            });
-    };
+    }, [route, setUpdate, setUpdateUsers]);
 
     return (
         <Global.Provider
@@ -69,13 +63,13 @@ export const GlobalProvider = ({ children }) => {
                 //filter
                 filtered,
                 setFiltered,
+                setUpdate,
                 // Route
                 route,
                 setRoute,
                 //auth
                 authName,
                 setAuthName,
-                logOut,
                 logged,
                 setLogged,
                 // Users Registered
@@ -83,6 +77,8 @@ export const GlobalProvider = ({ children }) => {
                 setUpdateUsers,
                 userResponse,
                 setUserDelete,
+                //Login
+                setRoute,
             }}
         >
             {children}

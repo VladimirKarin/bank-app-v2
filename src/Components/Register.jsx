@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 import { Global } from './Global';
 
@@ -7,18 +7,7 @@ function Register() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [repeatedPassword, setRepeatedPassword] = useState('');
-    // const { setLogged, setAuthName } = useContext(Global);
-
-    // useEffect(() => {
-    //     axios
-    //         .get('http://localhost:3333/login', {
-    //             withCredentials: true,
-    //         })
-    //         .then((res) => {
-    //             if (res.data.status === 'OK') {
-    //             }
-    //         });
-    // }, []);
+    const { setRoute } = useContext(Global);
 
     const register = (_) => {
         if (name.length < 3) {
@@ -48,6 +37,7 @@ function Register() {
                     setPassword('');
                     setRepeatedPassword('');
                     setError(null);
+                    setRoute('login');
                 } else {
                     setError('Server error');
                 }

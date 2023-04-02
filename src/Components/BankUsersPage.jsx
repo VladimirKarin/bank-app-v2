@@ -20,28 +20,30 @@ function BankUsersPage() {
     const [modalClassName, setModalClassName] = useState('app-modal,');
 
     const handleAddAccount = (firstName, lastName) => {
-        axios.post(URL, { firstName, lastName }).then((res) => {
-            setVisible(true);
-            setMessage('Account created successfully.');
-            setModalClassName('app-modal modal-success');
-            setType(MODAL_TYPES.SUCCESS);
+        axios
+            .post(URL, { firstName, lastName }, { withCredentials: true })
+            .then((res) => {
+                setVisible(true);
+                setMessage('Account created successfully.');
+                setModalClassName('app-modal modal-success');
+                setType(MODAL_TYPES.SUCCESS);
 
-            setTimeout(() => {
-                setVisible(false);
-                setMessage('');
-                setModalClassName('app-modal');
-                setType(MODAL_TYPES.ERROR);
-            }, 2000);
+                setTimeout(() => {
+                    setVisible(false);
+                    setMessage('');
+                    setModalClassName('app-modal');
+                    setType(MODAL_TYPES.ERROR);
+                }, 2000);
 
-            axios.get(URL).then((res) => {
-                setUsers(res.data);
+                axios.get(URL).then((res) => {
+                    setUsers(res.data);
+                });
             });
-        });
     };
 
     const handleDeleteAccount = (id) => {
         axios
-            .delete(URL + '/' + id)
+            .delete(URL + '/' + id, { withCredentials: true })
             .then((res) => {
                 setVisible(true);
                 setMessage('Account deleted successfully.');
@@ -80,7 +82,7 @@ function BankUsersPage() {
 
     const handleDepositAmountChange = (id, amount) => {
         axios
-            .put(URL + '/' + id, { amount })
+            .put(URL + '/' + id, { amount }, { withCredentials: true })
             .then((_) => {
                 setVisible(true);
                 setMessage('Money successfully transfered.');
@@ -115,7 +117,7 @@ function BankUsersPage() {
     };
 
     useEffect(() => {
-        axios.get(URL).then((res) => {
+        axios.get(URL, { withCredentials: true }).then((res) => {
             setUsers(res.data);
         });
     }, []);

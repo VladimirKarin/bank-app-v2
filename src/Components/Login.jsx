@@ -6,7 +6,7 @@ function Login() {
     const [error, setError] = useState(null);
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const { setLogged, setAuthName } = useContext(Global);
+    const { setLogged, setAuthName, setRoute } = useContext(Global);
 
     useEffect(() => {
         axios
@@ -31,6 +31,7 @@ function Login() {
                     setLogged(true);
                     setAuthName(res.data.name);
                     setError(null);
+                    setRoute('home');
                 } else {
                     setError(true);
                 }

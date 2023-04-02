@@ -1,17 +1,36 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Global } from './Global';
 import './styles/nav.css';
+import axios from 'axios';
 
 function Nav() {
-    const { route, setRoute, authName, logOut } = useContext(Global);
+    const { route, setRoute, authName, setLogged } = useContext(Global);
+
+    const logOut = (_) => {
+        axios
+            .post('http://localhost:3333/logout', {}, { withCredentials: true })
+            .then((res) => {
+                setLogged(false);
+                authName(null);
+                setRoute('home');
+            });
+    };
 
     return (
         <nav className="navbar">
             <div className="container">
                 <div className="nav-top">
-                    <div className="left">NavBar</div>
-
                     <div className="right" id="navbarNav">
+                        <span
+                            onClick={(_) => setRoute('home')}
+                            href="#"
+                            className={
+                                'nav-link' + (route === 'home' ? ' active' : '')
+                            }
+                            aria-current="page"
+                        >
+                            Home
+                        </span>
                         <span
                             onClick={(_) => setRoute('bank')}
                             href="#"
