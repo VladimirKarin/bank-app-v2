@@ -17,50 +17,50 @@ export const GlobalProvider = ({ children }) => {
     const [response, setResponse] = useState(null);
     const [authRole, setAuthRole] = useState(null);
 
-    useEffect(() => {
-        if (null === response) {
-            return;
-        }
-        setUpdate(Date.now());
-        if (null !== response) {
-            setMessage({
-                text: response.message.text,
-                type: response.message.type,
-            });
-        }
-    }, [response, setMessage, setUpdate]);
+    // useEffect(() => {
+    //     if (null === response) {
+    //         return;
+    //     }
+    //     setUpdate(Date.now());
+    //     if (null !== response) {
+    //         setMessage({
+    //             text: response.message.text,
+    //             type: response.message.type,
+    //         });
+    //     }
+    // }, [response, setMessage, setUpdate]);
 
-    useEffect(() => {
-        if (null === userResponse) {
-            return;
-        }
-        setUpdateUsers(Date.now());
-        if (userResponse.code) {
-            setMessage({
-                text: userResponse.message
-                    ? userResponse.message
-                    : userResponse.code,
-                type: 'error',
-            });
-        } else {
-            setMessage({
-                text: userResponse.message.text,
-                type: userResponse.message.type,
-            });
-        }
-    }, [setUpdateUsers, setMessage, userResponse]);
+    // useEffect(() => {
+    //     if (null === userResponse) {
+    //         return;
+    //     }
+    //     setUpdateUsers(Date.now());
+    //     if (userResponse.code) {
+    //         setMessage({
+    //             text: userResponse.message
+    //                 ? userResponse.message
+    //                 : userResponse.code,
+    //             type: 'error',
+    //         });
+    //     } else {
+    //         setMessage({
+    //             text: userResponse.message.text,
+    //             type: userResponse.message.type,
+    //         });
+    //     }
+    // }, [setUpdateUsers, setMessage, userResponse]);
 
     // useEffect(() => {
     //     setLogged(null);
     // }, [route]);
 
-    useEffect(() => {
-        if (route === 'registered-users') {
-            setUpdateUsers(Date.now());
-        } else if (route === 'bank') {
-            setUpdate(Date.now());
-        }
-    }, [route, setUpdate, setUpdateUsers]);
+    // useEffect(() => {
+    //     if (route === 'registered-users') {
+    //         setUpdateUsers(Date.now());
+    //     } else if (route === 'bank') {
+    //         setUpdate(Date.now());
+    //     }
+    // }, [route, setUpdate, setUpdateUsers]);
 
     return (
         <Global.Provider
@@ -82,8 +82,6 @@ export const GlobalProvider = ({ children }) => {
                 setUpdateUsers,
                 userResponse,
                 setUserDelete,
-                //Login
-                setRoute,
                 //AuthRole
                 authRole,
                 setAuthRole,

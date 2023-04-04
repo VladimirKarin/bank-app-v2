@@ -1,0 +1,26 @@
+.account-summary {
+    display: flex;
+    flex-direction: row;
+}
+.summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 50px;
+    border: 5px solid #ffa56b;
+    border-radius: 20px;
+}
+.summary-left {
+    margin-right: 25px;
+}
+
+.summary .summary_total {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.summary p {
+    color: #ffffff;
+    margin-left: 50px;
+}

@@ -4,7 +4,7 @@ import { Global } from './Global';
 function Users() {
     const { users, setUserDelete } = useContext(Global);
 
-    useEffect(() => {}, []);
+    // useEffect(() => {}, []);
 
     return (
         <div className="container">

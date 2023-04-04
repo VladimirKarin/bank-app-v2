@@ -48,6 +48,8 @@ const AddNewAccount = ({ onSaveNewAccount }) => {
         }
     };
 
+    const handleTax = () => {};
+
     return (
         <form className="form-style" onSubmit={submitHandler}>
             <div>
@@ -74,10 +76,14 @@ const AddNewAccount = ({ onSaveNewAccount }) => {
                     required
                 />
             </div>
-            <button className="add" type="submit">
-                Create the Account
-            </button>
-
+            <div>
+                <button className="tax" onClick={handleTax}>
+                    TAX
+                </button>
+                <button className="add" type="submit">
+                    Create the Account
+                </button>
+            </div>
             {/* Modal*/}
             {visible && (
                 <div className={modalClassName}>

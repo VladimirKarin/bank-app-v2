@@ -1,0 +1,167 @@
+/* button styling */
+button {
+    display: block;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+    border: none;
+    border-radius: 0.3em;
+    transition: background 0.5s;
+    text-decoration: none;
+    color: #fff;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button.add {
+    font-size: 0.8rem;
+    background: #ffa56b;
+    padding: 1em 1.5em;
+    text-transform: capitalize;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+button.add:hover {
+    background: #f96100;
+}
+
+button.delete {
+    background-color: #f03183;
+    font-size: 0.67rem;
+    padding: 0.5em 1.45em;
+    display: inline;
+    margin-top: 5px;
+}
+button.delete:hover {
+    background: #e8106d;
+}
+
+.delete-disabled {
+    background: #828282;
+    font-size: 0.67rem;
+    padding: 0.5em 1.45em;
+    display: inline;
+    margin-top: 5px;
+}
+.delete-disabled:hover {
+    background: #828282;
+}
+
+button.deposit,
+button.withdraw {
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+}
+.deposit {
+    background-color: #3e9292;
+    margin-right: 0.5em;
+    margin-top: 5px;
+}
+.deposit:hover {
+    background-color: #4aafaf;
+}
+.withdraw {
+    background: #f03183;
+    margin-top: 5px;
+}
+.withdraw:hover {
+    background: #e8106d;
+}
+.deposit-disabled {
+    background: #828282;
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+    margin-right: 0.5em;
+    margin-top: 5px;
+}
+
+.deposit-disabled:hover {
+    background: #828282;
+}
+
+.withdraw-disabled {
+    background: #828282;
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+    margin-right: 0.5em;
+    margin-top: 5px;
+}
+.withdraw-disabled:hover {
+    background: #828282;
+}
+
+button.block {
+    background-color: #f03183;
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+    margin: 5px 5px 0 0;
+}
+
+.unblock {
+    background-color: #3e9292;
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+    margin: 5px 5px 0 0;
+}
+
+.unblock:hover {
+    background-color: #4aafaf;
+}
+
+button.block:hover {
+    background-color: #e8106d;
+    font-size: 0.67rem;
+}
+
+button.unblock {
+    background-color: #3e9292;
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+    margin-top: 5px;
+}
+
+button.add-picture {
+    background-color: #ffa56b;
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+    margin-top: 5px;
+}
+button.add-picture:hover {
+    background-color: #f96100;
+}
+
+.add-picture-disabled {
+    background-color: #828282;
+    font-size: 0.67rem;
+    padding: 0.5em 1em;
+    display: inline;
+    margin-top: 5px;
+}
+
+button.add-picture:hover {
+    background-color: #828282;
+}
+
+button.tax {
+    background-color: #f03183;
+    font-size: 0.8rem;
+    padding: 1em 1.5em;
+    text-transform: capitalize;
+    display: inline-block;
+    border-radius: 10px;
+    margin-right: 135px;
+}
+
+button.tax:hover {
+    background-color: #e8106d;
+}

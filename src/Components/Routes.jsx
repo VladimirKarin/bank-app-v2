@@ -8,19 +8,19 @@ import Register from './Register';
 import Home from './Home';
 
 function Routes() {
-    const { route } = useContext(Global);
+    const { route, users } = useContext(Global);
 
     switch (route) {
         case 'home':
             return (
                 <Auth roles={''}>
-                    <Home />
+                    <Home accounts={users} />
                 </Auth>
             );
 
         case 'bank':
             return (
-                <Auth roles={'admin, user'}>
+                <Auth roles={'user,admin'}>
                     <BankUsersPage />
                 </Auth>
             );

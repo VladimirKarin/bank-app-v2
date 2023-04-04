@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { useContext, useEffect } from 'react';
 import { Global } from './Global';
-import LoadingSpinner from './Loader';
 import Login from './Login';
+import Home from './Home';
+
 import RoleError from './RoleError';
+import AccountSummary from './AccountSummary';
 
 function Auth({ children, roles }) {
     // const [isLoading, setIsLoading] = useState(false);
@@ -21,11 +23,9 @@ function Auth({ children, roles }) {
         axios
             .get('http://localhost:3333/login', { withCredentials: true })
             .then((res) => {
-                if (res.data.status === 'ok') {
+                if (res.data.status === 'OK') {
                     setAuthName(res.data.name);
-                    console.log(res.data.name);
                     setAuthRole(res.data.role);
-                    console.log('2', res.data.role);
                     if (roles) {
                         if (roles.split(',').includes(res.data.role)) {
                             setLogged(1);
@@ -34,7 +34,7 @@ function Auth({ children, roles }) {
                             } else if (route === 'registered-users') {
                                 setUpdateUsers(Date.now());
                             }
-                            if (route === 'numbers') {
+                            if (route === 'bank') {
                                 setUpdate(Date.now());
                             } else if (route === 'users') {
                                 setUpdateUsers(Date.now());
@@ -66,7 +66,7 @@ function Auth({ children, roles }) {
     ]);
 
     if (null === logged) {
-        return <LoadingSpinner />;
+        return <Home />;
     }
 
     if (1 === logged) {

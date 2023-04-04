@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Golos+Text:wght@400;500;600;700;800;900&display=swap');
-
+@import './Components/styles/buttons.css';
+@import './Components/styles/nav.css';
+@import './Components/styles/accountSummary.css';
 html {
     font-size: 16px;
 }
@@ -14,6 +16,7 @@ body * {
     font-family: 'Crimson Text', serif;
     font-family: 'Golos Text', sans-serif;
 }
+
 .App {
     text-align: center;
 }
@@ -36,26 +39,6 @@ h2 {
 }
 h2 + div {
     font-weight: bold;
-}
-
-.summary {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px 50px;
-    border: 5px solid #ffa56b;
-    border-radius: 20px;
-}
-
-.summary .summary_total {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.summary p {
-    color: #ffffff;
-    margin-left: 50px;
 }
 
 h1,
@@ -105,68 +88,6 @@ label {
 span {
     font-weight: bold;
     color: white;
-}
-
-/* button styling */
-button {
-    display: block;
-    font-weight: 600;
-    text-align: center;
-    margin: 0 auto;
-    border: none;
-    border-radius: 0.3em;
-    transition: background 0.5s;
-    text-decoration: none;
-    color: #fff;
-}
-
-button:hover {
-    cursor: pointer;
-}
-
-button.add {
-    font-size: 0.8rem;
-    background: #ffa56b;
-    padding: 1em 1.5em;
-    text-transform: capitalize;
-    display: inline-block;
-    border-radius: 10px;
-}
-button.delete {
-    background-color: #f470a9;
-    font-size: 0.67rem;
-    padding: 0.5em 1em;
-    display: inline;
-    margin-top: 5px;
-}
-button.delete:hover {
-    background-color: #e8106d;
-}
-
-button.add:hover {
-    background: #f96100;
-}
-
-button.deposit,
-button.withdraw {
-    font-size: 0.67rem;
-    padding: 0.5em 1em;
-    display: inline;
-}
-.deposit {
-    background-color: #3e9292;
-    margin-right: 0.5em;
-    margin-top: 5px;
-}
-.deposit:hover {
-    background-color: #4aafaf;
-}
-.withdraw {
-    background: #f03183;
-    margin-top: 5px;
-}
-.withdraw:hover {
-    background: #e8106d;
 }
 
 /* Styling list items */
